@@ -1,6 +1,6 @@
 <!DOCTYPE>
 <head>
-	<META CHARSET="utf-8"/>
+    <META CHARSET="utf-8"/>
 	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
 	<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
@@ -14,6 +14,7 @@
 				<th>大小</th>
 			</tr>
 <?php
+
 	$dir=$_GET['dir']?$_GET['dir']:".";
 	dirpath($dir);
 	function dirpath($dir){
@@ -24,6 +25,9 @@
 		foreach ($dir_array as $key => $value) {
 			echo "<tr>";
 			$path=$odir."/".$value;
+			//$bm=mb_detect_encoding($value);
+			//echo $bm;
+			$value=iconv("GBK","UTF-8",$value);
 			if(is_dir($path)){
 				echo "<td><span class=\"glyphicon glyphicon-folder-close\"></span><a href=?dir=".$dir."/".$value."> ".$value."</a></td>";
 				echo "<td>目录</td>";
@@ -84,6 +88,9 @@
 					case 'wav':
 					case 'flv':
 						echo "<span class=\"glyphicon glyphicon-music\"></span>";
+						break;
+					case 'torrent':
+						echo "<span class=\"glyphicon glyphicon-magnet\"></span>";
 						break;
 					default:
 						echo "<span class=\"glyphicon glyphicon-stop\"></span>";
