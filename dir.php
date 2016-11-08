@@ -27,9 +27,9 @@
 			$path=$odir."/".$value;
 			//$bm=mb_detect_encoding($value);
 			//echo $bm;
-			$value=iconv("GBK","UTF-8",$value);
+			//$value=iconv("GBK","UTF-8",$value);
 			if(is_dir($path)){
-				echo "<td><span class=\"glyphicon glyphicon-folder-close\"></span><a href=\"?dir=".$dir."/".$value."\"> ".$value."</a></td>";
+				echo "<td><span class=\"glyphicon glyphicon-folder-close\"></span><a href=?dir=".$dir."/".$value."> ".$value."</a></td>";
 				echo "<td>目录</td>";
 			}else{
 				echo "<td>";
@@ -96,7 +96,7 @@
 						echo "<span class=\"glyphicon glyphicon-stop\"></span>";
 						break;
 				}
-				echo "<a href=\"".$dir."/".$value."\"> ".$value."</a></td>";
+				echo "<a href=".$dir."/".$value."> ".$value."</a></td>";
 				echo  "<td>".filesize($path)."B</td>";
 			}		
 			echo "</tr>";
@@ -110,6 +110,3 @@
 	</div>	
 	
 </body>
-
-
-
