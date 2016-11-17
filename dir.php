@@ -1,4 +1,4 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <head>
     <META CHARSET="utf-8"/>
 	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
@@ -119,6 +119,3 @@
 	</div>	
 	
 </body>
-
-
-
