@@ -215,7 +215,7 @@ $x->open_dir();
 </head>
 <body>
 	<div class="container">
-		<span class="glyphicon glyphicon-chevron-left text-primary" id="back"></span>
+		<h2><span class="glyphicon glyphicon-chevron-left text-primary" id="back"></span></h2>
 		<table class="table table-striped ">
 			<tr>
 				<th>文件名</th>
