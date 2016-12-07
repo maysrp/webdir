@@ -214,9 +214,9 @@ $x->open_dir();
 		<table class="table table-striped ">
 			<tr>
 				<th>文件名</th>
-				<th></th>
 				<th>大小</th>
 				<th>时间</th>
+				<th>下载</th>
 			</tr>
 <?php
 	foreach ($x->dirdir as $key => $value) {
