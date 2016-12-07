@@ -16,3 +16,5 @@ eg：104.223.12.18
 ![输入图片说明](http://git.oschina.net/uploads/images/2016/1207/154052_1201172a_700748.png "视频")
 PDF
 ![输入图片说明](http://git.oschina.net/uploads/images/2016/1207/154111_05f29a34_700748.png "PDF")
+
+** 请不要使用index.php 以外的其他文件
