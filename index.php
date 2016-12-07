@@ -242,6 +242,7 @@ $x->open_dir();
 
 
 		</table>
+		<span>Powered by <a href="https://git.oschina.net/supercell/webdir">webdir</a></span>
 	</div>
 
 	<div>
