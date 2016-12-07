@@ -234,7 +234,7 @@ $x->open_dir();
 	}
 	foreach ($x->file as $key => $value) {
 		echo "<tr>";
-			echo "<td><span class=\"".$x->icon($value)." fileshow\" type=\"".$x->type($value)."\" value=\"".$value."\"> ".$x->filename($value)."</span></td>";
+			echo "<td><span class=\" click_onload  ".$x->icon($value)." fileshow\" type=\"".$x->type($value)."\" value=\"".$value."\"> ".$x->filename($value)."</span></td>";
 			echo "<td>".$x->size($value)."</td>";
 			echo "<td>".$x->mtime($value)."</td>";
 			echo "<td>".$x->download($value)."</td>";
@@ -317,6 +317,12 @@ $x->open_dir();
 		history.go(-1); 
 		location.reload(); 
 	})
+	$(".click_onload").mouseover(function(){
+		$(this).addClass("text-primary");
+	})
+	$(".click_onload").mouseout(function(){
+		$(this).removeClass("text-primary");
+	})	
 
 
 </script>
