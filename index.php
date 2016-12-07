@@ -191,6 +191,20 @@
 					break;
 			}
 		}
+		function pre(){
+			$dir_array=explode("/", $this->dir);
+			$num=count($dir_array);
+			if($num>=2){
+				@array_shift($dir_array);
+				$url="<a class=\"text-success\" href=?>/.</a>";
+				foreach ($dir_array as $key => $value) {
+					$step=$step.$value."/";
+					$url=$url."<a class=\"text-success\" href=\"?dir=".$step."\">/".$value."</a>";
+				}
+				return $url;
+			}
+
+		}
 	}
 	
 $x=new dir();
@@ -215,7 +229,17 @@ $x->open_dir();
 </head>
 <body>
 	<div class="container">
-		<h2><span class="glyphicon glyphicon-chevron-left text-primary" id="back"></span></h2>
+		<div class="row">
+			<div class="col-md-1">
+				<h2 class="btn btn-primary"><span class="glyphicon glyphicon-chevron-left " id="back"></span></h2>
+			</div>
+			<div class="col-md-10">
+				<h1>
+<?php		
+	echo $x->pre();
+?>				</h1>
+			</div>
+		</div>
 		<table class="table table-striped ">
 			<tr>
 				<th>文件名</th>
@@ -234,7 +258,7 @@ $x->open_dir();
 	}
 	foreach ($x->file as $key => $value) {
 		echo "<tr>";
-			echo "<td><span class=\" click_onload  ".$x->icon($value)." fileshow\" type=\"".$x->type($value)."\" value=\"".$value."\"> ".$x->filename($value)."</span></td>";
+			echo "<td><span class=\" click_onload ".$x->icon($value)." fileshow\" type=\"".$x->type($value)."\" value=\"".$value."\"> ".$x->filename($value)."</span></td>";
 			echo "<td>".$x->size($value)."</td>";
 			echo "<td>".$x->mtime($value)."</td>";
 			echo "<td>".$x->download($value)."</td>";
@@ -247,7 +271,7 @@ $x->open_dir();
 
 
 		</table>
-		<span>Powered by <a href="https://git.oschina.net/supercell/webdir">webdir</a></span>
+			<span>Powered by <a href="https://git.oschina.net/supercell/webdir">webdir</a></span>
 	</div>
 
 	<div>
