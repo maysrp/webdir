@@ -231,7 +231,10 @@ $x->open_dir();
 	<div class="container">
 		<div class="row">
 			<div class="col-md-1">
-				<h2 class="btn btn-primary"><span class="glyphicon glyphicon-chevron-left " id="back"></span></h2>
+				<a href="
+<?php echo $_SERVER['HTTP_REFERER'] ?>
+				"
+				><h2 class="btn btn-primary"><span class="glyphicon glyphicon-chevron-left " id="back"></span></h2></a>
 			</div>
 			<div class="col-md-10">
 				<h1>
@@ -336,10 +339,6 @@ $x->open_dir();
 	$('#modal').on('hidden.bs.modal', function (e) {
   		var play=$("#play")[0];
   			play.pause();
-	})
-	$("#back").click(function(){
-		history.go(-1); 
-		location.reload(); 
 	})
 	$(".click_onload").mouseover(function(){
 		$(this).addClass("text-primary");
