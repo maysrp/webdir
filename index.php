@@ -12,6 +12,11 @@
 			$this->notex=array("php","js","tgz");//不允许显示的后缀名文件
 			$this->notdir=array("a","phpmyadmin");//不允许显示的文件夹
 			if ($_GET['dir']) {
+				foreach ($this->notdir as $key => $value) {
+					if(strtolower($_GET['dir'])==$value){
+						$_GET['dir']=".";
+					}
+				}
 				$tom=trim($_GET['dir']);
 				$tam=str_replace("..", ".", $tom);
 				$this->dir="./".$tam;
