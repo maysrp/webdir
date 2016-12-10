@@ -9,6 +9,7 @@ index.php放在你的网站根目录并且设置好你的所在目录权限即�
 支持在线播放mp4视频和MP3音频以及PDF在线预览；
 
 eg：104.223.12.18
+LNMP LAMP 一键包测试通过， **windows下惨不忍睹** 
 
 图片:
 ![输入图片说明](http://git.oschina.net/uploads/images/2016/1207/154018_72e6622d_700748.png "图片")
