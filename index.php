@@ -221,9 +221,17 @@ $x->open_dir();
 	<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 	<title>Vardir</title>
 	<style type="text/css">
+	body{
+			background-color:#F1F1FA;
+		}
 		.container{
 			margin-top: 100px;
+			border-radius:10px;
+			background-color:#FFFFFF;
+
+
 		}
+
 
 	</style>
 </head>
