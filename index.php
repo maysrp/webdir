@@ -46,6 +46,9 @@
 					}	
 				}else{
 					$ex=array_pop(explode(".", $jugg));
+					//如果报错可将前一行代码写成以下形式
+					//$ar=explode(".", $jugg);
+					//$ex=array_pop($ar);
 					if(!in_array(strtolower($ex), $this->notex)){
 						$this->file[]=$this->dir."/".$jugg;
 					}
