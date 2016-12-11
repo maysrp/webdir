@@ -9,8 +9,8 @@
 		public $notex;
 		public $notdir;
 		function __construct(){
-			$this->notex=array("php","js","tgz");//不允许显示的后缀名文件
-			$this->notdir=array("a","phpmyadmin");//不允许显示的文件夹
+			$this->notex=array("php","js","tgz");//
+			$this->notdir=array("a","phpmyadmin");//
 			if ($_GET['dir']) {
 				foreach ($this->notdir as $key => $value) {
 					if(strtolower($_GET['dir'])==$value){
@@ -57,9 +57,7 @@
 			return "?dir=".$urf;
 		}
 		function type($file){
-			$nox=explode(".", $file);
-			$swap=array_pop($nox);
-			$ex=strtolower($swap);
+			$ex=strtolower(array_pop(explode(".", $file)));
 			switch ($ex) {
 				case 'png':
 				case 'jpg':
@@ -153,9 +151,7 @@
 			
 		}
 		function icon($file){
-			$nox=explode(".", $file);
-			$swap=array_pop($nox);
-			$ex=strtolower($swap);
+			$ex=strtolower(array_pop(explode(".", $file)));
 			switch ($ex) {
 				case 'png':
 				case 'jpg':
@@ -331,7 +327,7 @@ $x->open_dir();
 				$(".modal-title").html("");
 				$(".modal-title").html(name);
 				$(".modal-body").html("");
-				$(".modal-body").html("<audio src=\""+value+"\" id=\"play\" autoplay controls>您的浏览器不支持 audio 标签。</audio>");
+				$(".modal-body").html("<audio src=\""+value+"\" id=\"play\" autoplay controls>鎮ㄧ殑娴忚鍣ㄤ笉鏀寔 audio 鏍囩銆?/audio>");
 				$("#modal").modal();
 			break;
 			case "text":
