@@ -1,5 +1,6 @@
 #webdir
-
+##gbk.php
+如果中文乱码请使用该脚本
 ##mobile.php
 mobile.php放在你的网站根目录并且设置好你的所在目录权限即可[可以名称为修改为index.php]
 1.图标图片预览支持IE浏览器
