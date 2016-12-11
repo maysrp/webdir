@@ -9,8 +9,8 @@
 		public $notex;
 		public $notdir;
 		function __construct(){
-			$this->notex=array("php","js","tgz");//²»ÔÊĞíÏÔÊ¾µÄºó×ºÃûÎÄ¼ş
-			$this->notdir=array("a","phpmyadmin");//²»ÔÊĞíÏÔÊ¾µÄÎÄ¼ş¼Ğ
+			$this->notex=array("php","js","tgz");//ä¸å…è®¸æ˜¾ç¤ºçš„åç¼€åæ–‡ä»¶
+			$this->notdir=array("a","phpmyadmin");//ä¸å…è®¸æ˜¾ç¤ºçš„æ–‡ä»¶å¤¹
 			if ($_GET['dir']) {
 				foreach ($this->notdir as $key => $value) {
 					if(strtolower($_GET['dir'])==$value){
@@ -57,7 +57,9 @@
 			return "?dir=".$urf;
 		}
 		function type($file){
-			$ex=strtolower(array_pop(explode(".", $file)));
+			$nox=explode(".", $file);
+			$swap=array_pop($nox);
+			$ex=strtolower($swap);
 			switch ($ex) {
 				case 'png':
 				case 'jpg':
@@ -151,7 +153,9 @@
 			
 		}
 		function icon($file){
-			$ex=strtolower(array_pop(explode(".", $file)));
+			$nox=explode(".", $file);
+			$swap=array_pop($nox);
+			$ex=strtolower($swap);
 			switch ($ex) {
 				case 'png':
 				case 'jpg':
@@ -255,16 +259,16 @@ $x->open_dir();
 		</div>
 		<table class="table table-striped ">
 			<tr>
-				<th>ÎÄ¼şÃû</th>
-				<th>´óĞ¡</th>
-				<th>Ê±¼ä</th>
-				<th>ÏÂÔØ</th>
+				<th>æ–‡ä»¶å</th>
+				<th>å¤§å°</th>
+				<th>æ—¶é—´</th>
+				<th>ä¸‹è½½</th>
 			</tr>
 <?php
 	foreach ($x->dirdir as $key => $value) {
 		echo "<tr>";
 			echo "<td><a href=\"".$x->dirurl($value)."\"><span class=\"glyphicon glyphicon-list\"> ".$x->filename($value)."</span></a></td>";
-				echo "<td>Ä¿Â¼</td>";
+				echo "<td>ç›®å½•</td>";
 				echo "<td>".$x->mtime($value)."</td>";
 				echo "<td></td>";
 		echo "</tr>";
@@ -327,7 +331,7 @@ $x->open_dir();
 				$(".modal-title").html("");
 				$(".modal-title").html(name);
 				$(".modal-body").html("");
-				$(".modal-body").html("<audio src=\""+value+"\" id=\"play\" autoplay controls>ÄúµÄä¯ÀÀÆ÷²»Ö§³Ö audio ±êÇ©¡£</audio>");
+				$(".modal-body").html("<audio src=\""+value+"\" id=\"play\" autoplay controls>æ‚¨çš„æµè§ˆå™¨ä¸æ”¯æŒ audio æ ‡ç­¾ã€‚</audio>");
 				$("#modal").modal();
 			break;
 			case "text":
