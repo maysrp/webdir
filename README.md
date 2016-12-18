@@ -4,19 +4,22 @@
 在线转码，请开启PHP里面的exec()函数[php.ini 中将禁用的exec删除]
 服务端安装ffmpeg【windows请勿使用】
 ubuntu 安装ffmpeg
->sudo apt-get install ffmpeg
+```
+sudo apt-get install ffmpeg
+```
 Vultr 5刀的转换速度:!VPS不要搞这个，你需要一颗强劲的CPU，用其他互联网的云转码也不错。
 [vultr](http://git.oschina.net/uploads/images/2016/1219/035456_77bbf7bf_700748.png "转换速度")
 默认是webm格式的视频修改
+
 ```
 return "<span class=\"ffmpeg  text-primary\" value=\"?video=".$file."\"><span class=\"glyphicon glyphicon-refresh\"></span></span>|<a href=\"".$file."\" ><span class=\"glyphicon glyphicon-download-alt\"></span></a>";
-
 ```
+
 改变为:
 
-```
-return "<span class=\"ffmpeg text-primary\" value=\"?video=".$file."&type=mp4\"><span class=\"glyphicon glyphicon-refresh\"></span></span>|<a href=\"".$file."\" ><span class=\"glyphicon glyphicon-download-alt\"></span></a>";
-```
+
+> return "<span class=\"ffmpeg text-primary\" value=\"?video=".$file."&type=mp4\"><span class=\"glyphicon glyphicon-refresh\"></span></span>|<a href=\"".$file."\" ><span class=\"glyphicon glyphicon-download-alt\"></span></a>";
+
 
 
 
