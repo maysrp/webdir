@@ -1,4 +1,23 @@
 #webdir
+
+##ffmpge.php
+在线转码，请开启PHP里面的exec()函数[php.ini 中将禁用的exec删除]
+服务端安装ffmpeg【windows请勿使用】
+ubuntu 安装ffmpeg
+>sudo apt-get install ffmpeg
+Vultr 5刀的转换速度:!VPS不要搞这个，你需要一颗强劲的CPU，用其他互联网的云转码也不错。
+[vultr](http://git.oschina.net/uploads/images/2016/1219/035456_77bbf7bf_700748.png "转换速度")
+默认是webm格式的视频修改
+>return "<span class=\"ffmpeg  text-primary\" value=\"?video=".$file."\"><span class=\"glyphicon glyphicon-refresh\"></span></span>|<a href=\"".$file."\" ><span class=\"glyphicon glyphicon-download-alt\"></span></a>";
+
+改变为:
+
+>return "<span class=\"ffmpeg text-primary\" value=\"?video=".$file."&type=mp4\"><span class=\"glyphicon glyphicon-refresh\"></span></span>|<a href=\"".$file."\" ><span class=\"glyphicon glyphicon-download-alt\"></span></a>";
+
+
+
+
+
 ##gbk.zip
 如果中文乱码请解压使用该脚本
 ##mobile.php
@@ -24,20 +43,7 @@ LNMP LAMP 一键包测试通过， **windows下惨不忍睹**
 ![视频](http://git.oschina.net/uploads/images/2016/1211/042033_51ee13ad_700748.png "视频")
 ![视频](http://git.oschina.net/uploads/images/2016/1211/042056_71db3584_700748.png "视频")
 
-
-##index.php
-index.php放在你的网站根目录并且设置好你的所在目录权限即可
-只展示该目录以下的所有文件
-通过添加禁止显示文件夹以及后缀文件来控制显示
-例如:
->$this->notex=array("php","js","tgz");//不允许显示的后缀名文件
->$this->notdir=array("a","phpmyadmin");//不允许显示的文件夹
-
-支持在线播放mp4视频和MP3音频以及PDF在线预览；
-
-eg：104.223.12.18
-LNMP LAMP 一键包测试通过， **windows下惨不忍睹** 
-
+PC视图
 图片:
 ![图片](http://git.oschina.net/uploads/images/2016/1207/154018_72e6622d_700748.png "图片")
 视频
