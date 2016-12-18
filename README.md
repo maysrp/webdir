@@ -5,11 +5,18 @@
 基本界面和之前类似:
 ![ffmpeg](http://git.oschina.net/uploads/images/2016/1219/040352_a973d056_700748.png "界面")
 黄色的就是转换符号，未用到任何数据库,没有转换完成通知，调用时间根据你的设置的PHP脚本运行时间为止。
-在线转码，请开启PHP里面的exec()函数以及脚本运行时间
+在线转码，请
+```
+disable_functions = passthru,system,chroot,scandir,chgrp,chown,shell_exec,proc_open,exec,proc_get_status,popen,ini_alter,ini_restore,dl,openlog,syslog,readlink,symlink,popepassthru,stream_socket_server
+```
+上面删去exec
 
+已经修改脚本运行时间：
 ```
 max_execution_time = 45; 
 ```
+修改配置后记得重新启动php端：
+
 服务端安装ffmpeg【windows请勿使用】
 ubuntu 安装ffmpeg
 ```
