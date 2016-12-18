@@ -313,7 +313,7 @@ $x->open_dir();
 				$(".modal-title").html("");
 				$(".modal-title").html(name);
 				$(".modal-body").html("");
-				$(".modal-body").html("<a href=\""+value+"\"><img style=\"max-width:80%;\" src="+value+"></a>");
+				$(".modal-body").html("<a href=\""+value+"\"><img style=\"max-width:80%;\" src=\""+value+"\"></a>");
 				$("#modal").modal();
 			break;
 			case "video":
