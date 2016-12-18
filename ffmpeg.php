@@ -169,7 +169,7 @@
 		}
 		function ffmpeg($value,$type="webm"){//视频文件
 			$video=$value.".".$type;
-			$ecex="ffmpeg -i ".$value." " .$video." >null";
+			$ecex="ffmpeg -i ".$value." " .$video;
 			exec($ecex);
 
 		}
