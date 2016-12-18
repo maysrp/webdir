@@ -1,6 +1,7 @@
 #webdir
 
 ##ffmpge.php
+服务器可玩，vps没用，115 牛逼..
 
 基本界面和之前类似:
 ![ffmpeg](http://git.oschina.net/uploads/images/2016/1219/040352_a973d056_700748.png "界面")
@@ -11,9 +12,9 @@ disable_functions = passthru,system,chroot,scandir,chgrp,chown,shell_exec,proc_o
 ```
 上面删去exec
 
-已经修改脚本运行时间：
+已经修改脚本运行时间1000s：
 ```
-max_execution_time = 45; 
+max_execution_time = 1000; 
 ```
 修改配置后记得重新启动php端：
 
