@@ -2,7 +2,8 @@
 
 ##wadir.php
 基于aria2的额外插件，支持magnet下载，但是不会显，仅仅用于下载。
-
+基于php-aria:
+![wadir](http://git.oschina.net/uploads/images/2016/1222/104906_4ae29aad_700748.png "wadir")
 ##ffmpge.php
 服务器可玩，vps没用，115 牛逼..
 
