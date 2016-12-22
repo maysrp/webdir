@@ -1,7 +1,9 @@
 #webdir
 
 ##wadir.php
-基于php-aria，需要aria2的支持，支持magnet下载，仅仅用于下载。简单的管理停止与开启任务！
+基于php-aria2，需要安装aria2的支持。
+简单的管理:
+![wadir管理](http://git.oschina.net/uploads/images/2016/1222/153707_d010cd32_700748.png "管理")
 ![wadir](http://git.oschina.net/uploads/images/2016/1222/104906_4ae29aad_700748.png "wadir")
 ##ffmpge.php
 服务器可玩，vps没用，115 牛逼..
