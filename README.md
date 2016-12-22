@@ -1,5 +1,8 @@
 #webdir
 
+##wadir.php
+基于aria2的额外插件，支持magnet下载，但是不会显，仅仅用于下载。
+
 ##ffmpge.php
 服务器可玩，vps没用，115 牛逼..
 
