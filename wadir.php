@@ -331,7 +331,7 @@ echo $x->pre() ;
 
 
 		</table>
-			<span>Powered by <a href="https://git.oschina.net/supercell/webdir">webdir</a></span>
+			<span>Powered by <a href="https://github.com/maysrp/webdir">webdir</a></span>
 	</div>
 
 	<div>
