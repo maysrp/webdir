@@ -1,7 +1,9 @@
 #webdir
 
+##jugg.php
+该文件只用于检测你是否完成了aria2的配置，上传到你的网站根目录访问即可，如有正常的文件下载信息表示完成了aria2配置，删除该文件即可。
 ##wadir.php
-基于php-aria2，需要安装aria2的支持。
+基于<a href="https://github.com/maysrp/php-aria2">php-aria2</a>，需要安装aria2的支持。
 简单的管理:
 ![wadir管理](http://git.oschina.net/uploads/images/2016/1222/153707_d010cd32_700748.png "管理")
 ![wadir](http://git.oschina.net/uploads/images/2016/1222/104906_4ae29aad_700748.png "wadir")
