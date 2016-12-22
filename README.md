@@ -6,11 +6,14 @@
 ![wadir管理](http://git.oschina.net/uploads/images/2016/1222/153707_d010cd32_700748.png "管理")
 ![wadir](http://git.oschina.net/uploads/images/2016/1222/104906_4ae29aad_700748.png "wadir")
 ##more.php
+###简单的多用户实现
 创建不同的目录每个目录都放入more.php，需要修改密码[不要设置相同的密码]
 每个账户一个目录，登入后只能添加种子。
 缺点：
 1.无限制 [只能通过aria2的配置文件修改全局配置]
 2.每个用户都可以看到下载列表
+优点：
+1.简单，只要PHP就够了。
 ##ffmpge.php
 服务器可玩，vps没用，115 牛逼..
 
