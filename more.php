@@ -496,6 +496,7 @@ echo $x->pre() ;
 	$("#btn-magnet").click(function(){
 		var magnet=$("#magnet").val();
 		$.get("?url="+magnet,function(data){
+			//console.log(data);//用于检测是否建立成功			
 			if(typeof(mx) != 'undefined' ){
 				mx.hide();
 			}
