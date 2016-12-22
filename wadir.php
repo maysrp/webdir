@@ -2,6 +2,7 @@
 	/**
 	* 
 	*/
+	define("PASS", "admin");
 	class Aria2{
     	protected $ch;
     	function __construct($server='http://127.0.0.1:6800/jsonrpc'){
@@ -239,6 +240,7 @@
 		}
 	}
 	
+session_start();
 $x=new dir();
 $x->open_dir();
 $url=$_GET['url'];
@@ -268,17 +270,47 @@ if (strlen($_GET['url'])>5) {
 			margin-top: 100px;
 			border-radius:15px;
 			background-color:#FFFFFF;
-
-
 		}
-
 	</style>
 </head>
 <body>
+<?php
+	if ($_POST['password']==PASS) {
+		$_SESSION['user']="666";
+	}
+	if($_SESSION['user']){
+	}else{
+?>
+	<div  class="container">
+		<div class="row " style="margin:20px ">
+			<div class="row">
+					<center><h2 class="text-primary">Webdir</h2></center>	
+			</div>
+			<form class="form" action="" method="post">
+				<div class="row">
+					<div class="input-group col-md-4 col-md-offset-4">
+						<input type="password" name="password" class="form-control">
+						<span class="input-group-btn">
+							<input type="submit" name="sub" class="btn btn-success" value="登入">
+						</span>
+					</div>
+				</div>
+			</form>
+		</div>
+		
+	</div>
+<?php
+	return;
+	}
+?>
+
+
+
+
 	<div class="container">
 		<div class="row">
 			<div class="col-md-1">
-				<a href="
+				<a style="margin-bottom:10px; " href="
 <?php echo $_SERVER['HTTP_REFERER'] ?>
 				"
 				><h2 class="btn btn-primary"><span class="glyphicon glyphicon-chevron-left " id="back"></span></h2></a>
@@ -331,7 +363,7 @@ echo $x->pre() ;
 
 
 		</table>
-			<span>Powered by <a href="https://github.com/maysrp/webdir">webdir</a></span>
+			<span>Powered by <a href="https://git.oschina.net/supercell/webdir">webdir</a></span>
 	</div>
 
 	<div>
