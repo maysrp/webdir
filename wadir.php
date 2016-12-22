@@ -247,7 +247,9 @@ $url=$_GET['url'];
 if (strlen($_GET['url'])>5) {
 	$dir=dirname(__FILE__);
 	$aria2 = new Aria2('http://127.0.0.1:6800/jsonrpc');
-	$aria2->addUri(array($url),array('dir'=>$dir,));
+	$json=$aria2->addUri(array($url),array('dir'=>$dir,));
+	echo json_encode($json);
+	return;
 }
 ?>
 <!DOCTYPE html>
@@ -261,7 +263,10 @@ if (strlen($_GET['url'])>5) {
 	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
 	<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 	<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-	<title>Vardir</title>
+	<script src="//cdn.bootcss.com/messenger/1.5.0/js/messenger.min.js"></script>
+	<link href="//cdn.bootcss.com/messenger/1.5.0/css/messenger.min.css" rel="stylesheet">
+	<link href="//cdn.bootcss.com/messenger/1.5.0/css/messenger-theme-future.min.css" rel="stylesheet">
+	<title>Webdir</title>
 	<style type="text/css">
 		body{
 			background-color:#F1F1FA;
@@ -309,8 +314,8 @@ if (strlen($_GET['url'])>5) {
 
 	<div class="container">
 		<div class="row">
-			<div class="col-md-1">
-				<a style="margin-bottom:10px; " href="
+			<div class="col-md-1" style="margin-bottom:10px; ">
+				<a  href="
 <?php echo $_SERVER['HTTP_REFERER'] ?>
 				"
 				><h2 class="btn btn-primary"><span class="glyphicon glyphicon-chevron-left " id="back"></span></h2></a>
@@ -437,7 +442,12 @@ echo $x->pre() ;
 	})	
 	$("#btn-magnet").click(function(){
 		var magnet=$("#magnet").val();
-		$.get("?url="+magnet);
+		$.get("?url="+magnet,function(data){
+			if(typeof(mx) != 'undefined' ){
+				mx.hide();
+			}
+			mx=Messenger().post("你已经添加一个离线任务！");
+		});
 		$("#magnet").val("");
 	})
 
