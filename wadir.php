@@ -239,18 +239,22 @@
 
 		}
 	}
+	function size($fz){
+			if ($fz>(1024*1024*1024)) {
+				return sprintf("%.2f",$fz/(1024*1024*1024))."GB";
+			}elseif ($fz>(1024*1024)) {
+				return sprintf("%.2f",$fz/(1024*1024))."MB";
+			}elseif($fz>1024){
+				return sprintf("%.2f",$fz/1024)."KB";
+			}else{
+				return $fz."B";
+			}
+		}
 	
 session_start();
 $x=new dir();
 $x->open_dir();
-$url=$_GET['url'];
-if (strlen($_GET['url'])>5) {
-	$dir=dirname(__FILE__);
-	$aria2 = new Aria2('http://127.0.0.1:6800/jsonrpc');
-	$json=$aria2->addUri(array($url),array('dir'=>$dir,));
-	echo json_encode($json);
-	return;
-}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -307,11 +311,27 @@ if (strlen($_GET['url'])>5) {
 <?php
 	return;
 	}
+if (strlen($_GET['url'])>5) {//验证session才能添加操作
+	$url=$_GET['url'];
+	$dir=dirname(__FILE__);
+	$aria2 = new Aria2('http://127.0.0.1:6800/jsonrpc');
+	$json=$aria2->addUri(array($url),array('dir'=>$dir,));
+	echo json_encode($json);
+	return;
+}
+if(strlen($_GET['pause'])>5){
+	$aria2 = new Aria2('http://127.0.0.1:6800/jsonrpc');
+	$aria2->pause($_GET['pause']);
+	header("Location:".$_SERVER['HTTP_REFERER']);
+	return;
+}
+if(strlen($_GET['unpause'])>5){
+	$aria2 = new Aria2('http://127.0.0.1:6800/jsonrpc');
+	$aria2->unpause($_GET['unpause']);
+	header("Location:".$_SERVER['HTTP_REFERER']);
+	return;
+}	
 ?>
-
-
-
-
 	<div class="container">
 		<div class="row">
 			<div class="col-md-1" style="margin-bottom:10px; ">
@@ -327,14 +347,16 @@ echo $x->pre() ;
 ?>
 				</h3>
 			</div>
-			<div class="col-md-5">
+			<div class="col-md-4">
 				<div class="input-group" style="margin-top:10px ">
 					<input type="text" name="magnet" id="magnet" class="form-control">
 					<span class="input-group-btn">
 						<span class="btn btn-success" id="btn-magnet">Magnet</span>
 					</span>
 				</div>
-				
+			</div>
+			<div class="col-md-1 text-center" style="margin-top:10px ">
+				<span class="btn btn-info" id="xzz">下载列表</span>
 			</div>
 		</div>
 		<table class="table table-striped ">
@@ -361,16 +383,10 @@ echo $x->pre() ;
 			echo "<td>".$x->download($value)."</td>";
 		echo "</tr>";
 	}
-
-
-
 ?>
-
-
 		</table>
 			<span>Powered by <a href="https://git.oschina.net/supercell/webdir">webdir</a></span>
 	</div>
-
 	<div>
 		<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="modal">
   			<div class="modal-dialog modal-lg">
@@ -387,6 +403,51 @@ echo $x->pre() ;
   			</div>
 		</div>
 	</div>
+	<div class="row hide" id="showdownload">
+		<span class="text-success"><b>正在下载的任务</b></span>
+		<table class="table">
+			<tr>
+				<th class="text-left">文件名</th>
+				<th>下载速度</th>
+				<th>完成率</th>
+				<th>操作</th>
+			</tr>
+<?php
+	$aria2 = new Aria2('http://127.0.0.1:6800/jsonrpc');
+	$info=$aria2->tellActive();
+	foreach ($info['result'] as $key => $value) {
+		//echo "<tr><td>".$value['gid']."</td>";
+		echo "<td class=\"text-left\">".$value['bittorrent']['info']['name']."</td>";
+		echo "<td>".size($value['downloadSpeed'])."/S</td>";
+		echo "<td>".round($value['completedLength']/$value['totalLength']*100,2)."%</td>";
+		echo "<td><a href=\"?pause=".$value['gid']."\" class=\" btn btn-danger btn-sm \" >关闭</a></td></tr>";
+	}
+?>
+		</table>
+		<hr>
+		<span class="text-warning"><b>等待中的任务</b></span>
+		<hr>
+		<table class="table">
+			<tr>
+				<th class="text-left">文件名</th>
+				<th>下载速度</th>
+				<th>完成率</th>
+				<th>操作</th>
+			</tr>
+<?php
+	$info=$aria2->tellWaiting(0,1000);
+	foreach ($info['result'] as $key => $value) {
+		//echo "<tr><td>".$value['gid']."</td>";
+		echo "<td class=\"text-left\">".$value['bittorrent']['info']['name']."</td>";
+		echo "<td>".size($value['downloadSpeed'])."/S</td>";
+		echo "<td>".round($value['completedLength']/$value['totalLength']*100,2)."%</td>";
+		echo "<td><a href=\"?unpause=".$value['gid']."\" class=\" btn btn-success btn-sm \" >开始</a></td></tr>";
+	}
+?>
+		</table>
+	</div>
+
+
 <script type="text/javascript">
 	$(".fileshow").click(function(){
 		var type=$(this).attr("type");
@@ -394,37 +455,27 @@ echo $x->pre() ;
 		var value=$(this).attr("value");
 		switch(type){
 			case "img":
-				$(".modal-title").html("");
 				$(".modal-title").html(name);
-				$(".modal-body").html("");
 				$(".modal-body").html("<a href=\""+value+"\"><img style=\"max-width:80%;\" src=\""+value+"\"></a>");
 				$("#modal").modal();
 			break;
 			case "video":
-				$(".modal-title").html("");
 				$(".modal-title").html(name);
-				$(".modal-body").html("");
 				$(".modal-body").html("<video width=\"80%\" autoplay controls id=\"play\" src=\""+value+"\"></video>");
 				$("#modal").modal();
 			break;
 			case "mp3":
-				$(".modal-title").html("");
 				$(".modal-title").html(name);
-				$(".modal-body").html("");
 				$(".modal-body").html("<audio src=\""+value+"\" id=\"play\" autoplay controls>您的浏览器不支持 audio 标签。</audio>");
 				$("#modal").modal();
 			break;
 			case "text":
-				$(".modal-title").html("");
 				$(".modal-title").html(name);
-				$(".modal-body").html("");
 				$(".modal-body").html("<iframe width=\"80%\" height=\"600px\" src="+value+">");
 				$("#modal").modal();
 			break;
 			case "pdf":
-				$(".modal-title").html("");
 				$(".modal-title").html(name);
-				$(".modal-body").html("");
 				$(".modal-body").html("<iframe width=\"80%\" height=\"800px\" src="+value+">");
 				$("#modal").modal();
 			default:
@@ -450,6 +501,14 @@ echo $x->pre() ;
 		});
 		$("#magnet").val("");
 	})
+	$("#xzz").click(function(){
+		var show=$("#showdownload").clone();
+		show.removeClass("hide");
+		$(".modal-title").html("下载列表");
+		$(".modal-body").html(show);
+		$("#modal").modal();
+	})
+	
 
 </script>
 </body>
