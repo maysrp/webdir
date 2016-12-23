@@ -5,10 +5,13 @@
 简单的管理:
 ![wadir管理](http://git.oschina.net/uploads/images/2016/1222/153707_d010cd32_700748.png "管理")
 ![wadir](http://git.oschina.net/uploads/images/2016/1222/104906_4ae29aad_700748.png "wadir")
+![wadir](http://inory.net/images/2016/12/24/jm.png "wadir")
+底部显示磁盘信息：
+![wadir](http://inory.net/images/2016/12/24/cp.png "wadir")
+![wadir](http://inory.net/images/2016/12/24/df709459e28852b4.png "wadir")
+未成功添加将会显示错误信息。
 
-<a href="http://inory.net/image/iX0o"><img src="http://inory.net/images/2016/12/24/jm.png" alt="jm.png" border="0"></a>
-<a href="http://inory.net/image/iZIN"><img src="http://inory.net/images/2016/12/24/cp.png" alt="cp.png" border="0"></a>
-
+关于导入Magnet成功却从未有速度，且不显示文件名的，可能存在的问题，缺少dht.dat,参考下文中的dht.dat的处理方法
 ##wardir/
 将整个文件夹中的文件放在你的网站根目录中：
 
