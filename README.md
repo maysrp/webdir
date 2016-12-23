@@ -9,9 +9,21 @@
 底部显示磁盘信息：
 ![wadir](http://inory.net/images/2016/12/24/cp.png "wadir")
 ![wadir](http://inory.net/images/2016/12/24/df709459e28852b4.png "wadir")
+
 未成功添加将会显示错误信息。
 
 关于导入Magnet成功却从未有速度，且不显示文件名的，可能存在的问题，缺少dht.dat,参考下文中的dht.dat的处理方法
+###配置
+密码:
+'''
+define("PASS", "admin");
+'''
+配置显示文件以及文件夹
+'''
+$this->notex=array("php","js","tgz");//不允许显示的后缀名文件
+$this->notdir=array("a","phpmyadmin");//不允许显示的文件夹
+'''
+
 ##wardir/
 将整个文件夹中的文件放在你的网站根目录中：
 
