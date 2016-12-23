@@ -6,6 +6,10 @@
 >详细管理>界面管理.html 
 
 即可进入原有的Yaaw，可以在上面添加种子,管理之前的下载。
+[iframe大法好，惊呼！]
+![001](http://git.oschina.net/uploads/images/2016/1223/191116_8b496e8a_700748.png "wadir/")
+![002](http://git.oschina.net/uploads/images/2016/1223/191131_b0e23a59_700748.png "wadir/")
+![003](http://git.oschina.net/uploads/images/2016/1223/191140_3c93a4ee_700748.png "wadir/")
 
 
 ##jugg.php
