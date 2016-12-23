@@ -14,6 +14,8 @@
 
 ##jugg.php
 该文件只用于检测你是否完成了aria2的配置，上传到你的网站根目录访问即可，如有正常的文件下载信息表示完成了aria2配置，删除该文件即可。
+##dht.dat
+有些新安装aria2，可能会因为缺少dht.dat导致无法magnet下载，拷贝该文件到你的/root/.aria2/下即可
 ##wadir.php
 基于<a href="https://github.com/shiny/php-aria2">php-aria2</a>，需要安装aria2的支持。
 简单的管理:
