@@ -1,4 +1,14 @@
 #webdir
+
+##wadir.php
+基于<a href="https://github.com/shiny/php-aria2">php-aria2</a>，需要安装aria2的支持。
+简单的管理:
+![wadir管理](http://git.oschina.net/uploads/images/2016/1222/153707_d010cd32_700748.png "管理")
+![wadir](http://git.oschina.net/uploads/images/2016/1222/104906_4ae29aad_700748.png "wadir")
+
+<a href="http://inory.net/image/iX0o"><img src="http://inory.net/images/2016/12/24/jm.png" alt="jm.png" border="0"></a>
+<a href="http://inory.net/image/iZIN"><img src="http://inory.net/images/2016/12/24/cp.png" alt="cp.png" border="0"></a>
+
 ##wardir/
 将整个文件夹中的文件放在你的网站根目录中：
 
@@ -16,11 +26,6 @@
 该文件只用于检测你是否完成了aria2的配置，上传到你的网站根目录访问即可，如有正常的文件下载信息表示完成了aria2配置，删除该文件即可。
 ##dht.dat
 有些新安装aria2，可能会因为缺少dht.dat导致无法magnet下载，拷贝该文件到你的/root/.aria2/下即可
-##wadir.php
-基于<a href="https://github.com/shiny/php-aria2">php-aria2</a>，需要安装aria2的支持。
-简单的管理:
-![wadir管理](http://git.oschina.net/uploads/images/2016/1222/153707_d010cd32_700748.png "管理")
-![wadir](http://git.oschina.net/uploads/images/2016/1222/104906_4ae29aad_700748.png "wadir")
 ##more.php
 ###简单的多用户实现
 创建不同的目录每个目录都放入more.php，需要修改密码[不要设置相同的密码]
