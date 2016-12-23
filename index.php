@@ -11,7 +11,7 @@
 		function __construct(){
 			$this->notex=array("php","js","tgz");//不允许显示的后缀名文件
 			$this->notdir=array("a","phpmyadmin");//不允许显示的文件夹
-			if ($_GET['dir']) {
+			if (!empty($_GET['dir'])) {
 				foreach ($this->notdir as $key => $value) {
 					if(strtolower($_GET['dir'])==$value){
 						$_GET['dir']=".";
@@ -45,7 +45,8 @@
 						$this->dirdir[]=$this->dir."/".$jugg;
 					}	
 				}else{
-					$ex=array_pop(explode(".", $jugg));
+                    $arrJugg = explode(".", $jugg);
+					$ex=array_pop($arrJugg);
 					//如果报错可将前一行代码写成以下形式
 					//$ar=explode(".", $jugg);
 					//$ex=array_pop($ar);
@@ -60,7 +61,8 @@
 			return "?dir=".$urf;
 		}
 		function type($file){
-			$ex=strtolower(array_pop(explode(".", $file)));
+            $arrFile = explode(".", $file);
+			$ex=strtolower(array_pop($arrFile));
 			switch ($ex) {
 				case 'png':
 				case 'jpg':
@@ -126,7 +128,8 @@
 
 		}
 		function filename($file){
-			return array_pop(explode("/", $file));
+            $arrFiles = explode("/", $file);
+			return array_pop($arrFiles);
 		}
 		function text($file){
 
@@ -154,7 +157,8 @@
 			
 		}
 		function icon($file){
-			$ex=strtolower(array_pop(explode(".", $file)));
+            $arrFile = explode(".", $file);
+			$ex=strtolower(array_pop($arrFile));
 			switch ($ex) {
 				case 'png':
 				case 'jpg':
