@@ -44,7 +44,7 @@
 		function __construct(){
 			$this->notex=array("php","js","tgz");//不允许显示的后缀名文件
 			$this->notdir=array("a","phpmyadmin");//不允许显示的文件夹
-			if ($_GET['dir']) {
+			if (!empty($_GET['dir'])) {
 				foreach ($this->notdir as $key => $value) {
 					if(strtolower($_GET['dir'])==$value){
 						$_GET['dir']=".";
@@ -63,8 +63,8 @@
 					while(($file=readdir($dh))!==false){
 						$this->jugg($file);
 					}
-					sort($this->file);
-					sort($this->dirdir);
+					$this->file && sort($this->file);
+					$this->dirdir && sort($this->dirdir);
 					closedir($dh);
 				}
 			}else{
@@ -78,7 +78,8 @@
 						$this->dirdir[]=$this->dir."/".$jugg;
 					}	
 				}else{
-					$ex=array_pop(explode(".", $jugg));
+                    $arrJugg = explode(".", $jugg);
+					$ex=array_pop($arrJugg);
 					if(!in_array(strtolower($ex), $this->notex)){
 						$this->file[]=$this->dir."/".$jugg;
 					}
@@ -90,7 +91,8 @@
 			return "?dir=".$urf;
 		}
 		function type($file){
-			$ex=strtolower(array_pop(explode(".", $file)));
+            $arrFile = explode(".", $file);
+			$ex=strtolower(array_pop($arrFile));
 			switch ($ex) {
 				case 'png':
 				case 'jpg':
@@ -156,7 +158,8 @@
 
 		}
 		function filename($file){
-			return array_pop(explode("/", $file));
+            $arrFile = explode("/", $file);
+			return array_pop($arrFile);
 		}
 		function text($file){
 
@@ -184,7 +187,8 @@
 			
 		}
 		function icon($file){
-			$ex=strtolower(array_pop(explode(".", $file)));
+            $arrFile = explode(".", $file);
+			$ex=strtolower(array_pop($arrFile));
 			switch ($ex) {
 				case 'png':
 				case 'jpg':
@@ -230,6 +234,7 @@
 			if($num>=2){
 				@array_shift($dir_array);
 				$url="<a class=\"text-success\" href=?>/.</a>";
+                $step = '';
 				foreach ($dir_array as $key => $value) {
 					$step=$step.$value."/";
 					$url=$url."<a class=\"text-success\" href=\"?dir=".$step."\">/".$value."</a>";
@@ -284,10 +289,10 @@ $x->open_dir();
 </head>
 <body>
 <?php
-	if ($_POST['password']==PASS) {
+	if (isset($_POST['password']) && $_POST['password']==PASS) {
 		$_SESSION['user']="666";
 	}
-	if($_SESSION['user']){
+	if(isset($_SESSION['user']) && $_SESSION['user']){
 	}else{
 ?>
 	<div  class="container">
@@ -311,7 +316,7 @@ $x->open_dir();
 <?php
 	return;
 	}
-if (strlen($_GET['url'])>5) {//验证session才能添加操作
+if (isset($_GET['url']) && strlen($_GET['url'])>5) {//验证session才能添加操作
 	$url=$_GET['url'];
 	$dir=dirname(__FILE__);
 	$aria2 = new Aria2('http://127.0.0.1:6800/jsonrpc');
@@ -319,13 +324,13 @@ if (strlen($_GET['url'])>5) {//验证session才能添加操作
 	echo json_encode($json);
 	return;
 }
-if(strlen($_GET['pause'])>5){
+if(isset($_GET['pause']) && strlen($_GET['pause'])>5){
 	$aria2 = new Aria2('http://127.0.0.1:6800/jsonrpc');
 	$aria2->pause($_GET['pause']);
 	header("Location:".$_SERVER['HTTP_REFERER']);
 	return;
 }
-if(strlen($_GET['unpause'])>5){
+if(isset($_GET['unpause']) && strlen($_GET['unpause'])>5){
 	$aria2 = new Aria2('http://127.0.0.1:6800/jsonrpc');
 	$aria2->unpause($_GET['unpause']);
 	header("Location:".$_SERVER['HTTP_REFERER']);
@@ -365,22 +370,26 @@ echo $x->pre() ;
 				<th>下载</th>
 			</tr>
 <?php
-	foreach ($x->dirdir as $key => $value) {
-		echo "<tr>";
-			echo "<td><a href=\"".$x->dirurl($value)."\"><span class=\"glyphicon glyphicon-list\"> ".$x->filename($value)."</span></a></td>";
-				echo "<td>目录</td>";
-				echo "<td>".$x->mtime($value)."</td>";
-				echo "<td></td>";
-		echo "</tr>";
-	}
-	foreach ($x->file as $key => $value) {
-		echo "<tr>";
-			echo "<td><span class=\" click_onload ".$x->icon($value)." fileshow\" type=\"".$x->type($value)."\" value=\"".rawurlencode($value)."\"> ".$x->filename($value)."</span></td>";
-			echo "<td>".$x->size($value)."</td>";
-			echo "<td>".$x->mtime($value)."</td>";
-			echo "<td>".$x->download($value)."</td>";
-		echo "</tr>";
-	}
+    if ($x->dirdir) {
+        foreach ($x->dirdir as $key => $value) {
+            echo "<tr>";
+                echo "<td><a href=\"".$x->dirurl($value)."\"><span class=\"glyphicon glyphicon-list\"> ".$x->filename($value)."</span></a></td>";
+                    echo "<td>目录</td>";
+                    echo "<td>".$x->mtime($value)."</td>";
+                    echo "<td></td>";
+            echo "</tr>";
+        }
+    }
+    if ($x->file) {
+        foreach ($x->file as $key => $value) {
+            echo "<tr>";
+                echo "<td><span class=\" click_onload ".$x->icon($value)." fileshow\" type=\"".$x->type($value)."\" value=\"".rawurlencode($value)."\"> ".$x->filename($value)."</span></td>";
+                echo "<td>".$x->size($value)."</td>";
+                echo "<td>".$x->mtime($value)."</td>";
+                echo "<td>".$x->download($value)."</td>";
+            echo "</tr>";
+        }
+    }
 ?>
 		</table>
 			<span>Powered by <a href="https://git.oschina.net/supercell/webdir">webdir</a></span>
