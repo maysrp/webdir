@@ -347,16 +347,14 @@ echo $x->pre() ;
 ?>
 				</h3>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-5">
 				<div class="input-group" style="margin-top:10px ">
 					<input type="text" name="magnet" id="magnet" class="form-control">
 					<span class="input-group-btn">
 						<span class="btn btn-success" id="btn-magnet">Magnet</span>
+						<span class="btn btn-info" id="xzz">下载列表</span>
 					</span>
 				</div>
-			</div>
-			<div class="col-md-1 text-center" style="margin-top:10px ">
-				<span class="btn btn-info" id="xzz">下载列表</span>
 			</div>
 		</div>
 		<table class="table table-striped ">
