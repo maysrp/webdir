@@ -4,7 +4,9 @@
 基于<a href="https://github.com/shiny/php-aria2">php-aria2</a>，需要安装aria2的支持。
 简单的管理:
 ![wadir管理](http://git.oschina.net/uploads/images/2016/1222/153707_d010cd32_700748.png "管理")
-![wadir](http://git.oschina.net/uploads/images/2016/1222/104906_4ae29aad_700748.png "wadir")
+
+支持 MP4  mp3 PDF 在线预览
+
 ![wadir](http://inory.net/images/2016/12/24/jm.png "wadir")
 底部显示磁盘信息：
 ![wadir](http://inory.net/images/2016/12/24/cp.png "wadir")
