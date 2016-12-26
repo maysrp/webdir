@@ -24,6 +24,11 @@
 				$this->dir=".";
 			}
 		}
+		function ex($string){
+			$ar=explode(".", $string);
+			$ex=array_pop($ar);
+			return strtolower($ex);
+		}
 		function open_dir(){
 			if(is_dir($this->dir)){
 				if($dh=opendir($this->dir)){
@@ -45,11 +50,8 @@
 						$this->dirdir[]=$this->dir."/".$jugg;
 					}	
 				}else{
-					$ex=array_pop(explode(".", $jugg));
-					//如果报错可将前一行代码写成以下形式
-					//$ar=explode(".", $jugg);
-					//$ex=array_pop($ar);
-					if(!in_array(strtolower($ex), $this->notex)){
+					$ex=$this->ex($jugg);
+					if(!in_array($ex, $this->notex)){
 						$this->file[]=$this->dir."/".$jugg;
 					}
 				}
@@ -60,7 +62,7 @@
 			return "?dir=".$urf;
 		}
 		function type($file){
-			$ex=strtolower(array_pop(explode(".", $file)));
+			$ex=$this->ex($file);
 			switch ($ex) {
 				case 'png':
 				case 'jpg':
@@ -126,7 +128,8 @@
 
 		}
 		function filename($file){
-			return array_pop(explode("/", $file));
+			$ar=explode("/", $file);
+			return array_pop($ar);
 		}
 		function text($file){
 
@@ -154,7 +157,7 @@
 			
 		}
 		function icon($file){
-			$ex=strtolower(array_pop(explode(".", $file)));
+			$ex=$this->ex($file);
 			switch ($ex) {
 				case 'png':
 				case 'jpg':
@@ -218,23 +221,25 @@ $x->open_dir();
 <html>
 <head>
 	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
 	<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 	<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 	<title>Vardir</title>
 	<style type="text/css">
-	body{
+		body{
 			background-color:#F1F1FA;
 		}
 		.container{
 			margin-top: 100px;
-			border-radius:10px;
+			border-radius:15px;
 			background-color:#FFFFFF;
 
 
 		}
-
 
 	</style>
 </head>
@@ -248,10 +253,10 @@ $x->open_dir();
 				><h2 class="btn btn-primary"><span class="glyphicon glyphicon-chevron-left " id="back"></span></h2></a>
 			</div>
 			<div class="col-md-10">
-				<h1>
+				<h3>
 <?php		
 	echo $x->pre();
-?>				</h1>
+?>				</h3>
 			</div>
 		</div>
 		<table class="table table-striped ">
@@ -314,14 +319,14 @@ $x->open_dir();
 				$(".modal-title").html("");
 				$(".modal-title").html(name);
 				$(".modal-body").html("");
-				$(".modal-body").html("<a href=\""+value+"\"><img style=\"max-width:600px;\" src=\""+value+"\"></a>");
+				$(".modal-body").html("<a href=\""+value+"\"><img style=\"max-width:80%;\" src=\""+value+"\"></a>");
 				$("#modal").modal();
 			break;
 			case "video":
 				$(".modal-title").html("");
 				$(".modal-title").html(name);
 				$(".modal-body").html("");
-				$(".modal-body").html("<video width=\"800px\" autoplay controls id=\"play\" src=\""+value+"\"></video>");
+				$(".modal-body").html("<video width=\"80%\" autoplay controls id=\"play\" src=\""+value+"\"></video>");
 				$("#modal").modal();
 			break;
 			case "mp3":
@@ -335,14 +340,14 @@ $x->open_dir();
 				$(".modal-title").html("");
 				$(".modal-title").html(name);
 				$(".modal-body").html("");
-				$(".modal-body").html("<iframe width=\"800px\" height=\"600px\" src="+value+">");
+				$(".modal-body").html("<iframe width=\"80%\" height=\"600px\" src="+value+">");
 				$("#modal").modal();
 			break;
 			case "pdf":
 				$(".modal-title").html("");
 				$(".modal-title").html(name);
 				$(".modal-body").html("");
-				$(".modal-body").html("<iframe width=\"800px\" height=\"800px\" src="+value+">");
+				$(".modal-body").html("<iframe width=\"80%\" height=\"800px\" src="+value+">");
 				$("#modal").modal();
 			default:
 		}
