@@ -228,7 +228,7 @@ $x->open_dir();
 	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
 	<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 	<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-	<title>Vardir</title>
+	<title>Webdir</title>
 	<style type="text/css">
 		body{
 			background-color:#F1F1FA;
