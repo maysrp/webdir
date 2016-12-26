@@ -3,16 +3,8 @@
 ##wadir.php
 基于<a href="https://github.com/shiny/php-aria2">php-aria2</a>，需要安装aria2的支持。
 简单的管理:
-![wadir管理](http://git.oschina.net/uploads/images/2016/1222/153707_d010cd32_700748.png "管理")
-
-支持 MP4  mp3 PDF 在线预览
-
-![wadir](http://inory.net/images/2016/12/24/jm.png "wadir")
-底部显示磁盘信息：
-![wadir](http://inory.net/images/2016/12/24/cp.png "wadir")
-![wadir](http://inory.net/images/2016/12/24/df709459e28852b4.png "wadir")
-
-未成功添加将会显示错误信息。
+<img src="http://inory.net/images/2016/12/26/ec7938932a3f4f0e.png" alt="ec7938932a3f4f0e.png" border="0">
+<img src="http://inory.net/images/2016/12/26/bt1.png" alt="bt1.png" border="0">
 
 关于导入Magnet成功却从未有速度，且不显示文件名的，可能存在的问题，缺少dht.dat,参考下文中的dht.dat的处理方法
 ###配置
