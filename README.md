@@ -44,17 +44,8 @@ $this->notdir=array("a","phpmyadmin");//不允许显示的文件夹
 ```
 
 ##wardir/
-将整个文件夹中的文件放在你的网站根目录中：
 
-点击 
->详细管理>界面管理.html 
-
-即可进入原有的<a href="https://binux.github.io/yaaw/">Yaaw</a>，可以在上面添加种子,管理之前的下载。
-[iframe大法好，惊呼！]
-![001](http://git.oschina.net/uploads/images/2016/1223/191116_8b496e8a_700748.png "wardir/")
-![002](http://git.oschina.net/uploads/images/2016/1223/191131_b0e23a59_700748.png "wardir/")
-![003](http://git.oschina.net/uploads/images/2016/1223/191140_3c93a4ee_700748.png "wardir/")
-
+移动到:https://github.com/maysrp/wardir
 
 ##jugg.php
 该文件只用于检测你是否完成了aria2的配置，上传到你的网站根目录访问即可，如有正常的文件下载信息表示完成了aria2配置，删除该文件即可。
