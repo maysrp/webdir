@@ -2,6 +2,7 @@
 	/**
 	* 
 	*/
+	//define("PASS", "123");//若要设置密码请将define()前的斜线删去
 	class dir{
 		public $dir;
 		public $file;
@@ -212,10 +213,6 @@
 
 		}
 	}
-	
-$x=new dir();
-$x->open_dir();
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -244,6 +241,49 @@ $x->open_dir();
 	</style>
 </head>
 <body>
+<?php
+if(defined("PASS")){
+	session_start();
+	if ($_SESSION['user']==PASS) {
+	}else{
+		if($_POST['pass']==PASS){
+			$_SESSION['user']=PASS;
+		}else{
+?>
+	<div class="container">
+		<form method="POST" action="">
+			<div class="row">
+				<h1 class="text-center text-success">Webdir</h1>
+			</div>
+			<div class="row">
+				<div class="col-md-4 col-md-offset-4">
+					<div class="input-group">
+						<input type="password" name="pass" class="form-control">
+						<span class="input-group-btn">
+							<input type="submit" name="sub" value="登入" class="btn btn-danger">
+						</span>
+					</div>				
+				</div>
+			</div>
+		</form>
+		<div class="row">
+			<span style="margin: 15px;">Powered by <a href="https://github.com/maysrp/webdir">Webdir</a></span>
+		</div>
+	</div>
+
+<?php
+			return false;
+		}
+		
+	}
+
+
+
+}
+$x=new dir();
+$x->open_dir();
+
+?>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-1">
