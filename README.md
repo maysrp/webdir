@@ -12,24 +12,14 @@ $this->notex=array("php","js","tgz");//不允许显示的后缀名文件
 $this->notdir=array("a","phpmyadmin");//不允许显示的文件夹
 ```
 
-支持在线播放mp4视频和MP3音频以及PDF在线预览；
+支持在线播放mp4视频和MP3音频以及PDF在线预览,对于手机的自适应不是特别完美。
 eg：http://172.82.191.216/
 
 LNMP LAMP 一键包测试通过， **windows下惨不忍睹** 
-列表
-![图片浏览](http://git.oschina.net/uploads/images/2016/1211/042006_bb2bc8db_700748.png "图片浏览")
-视频播放:
-![视频](http://git.oschina.net/uploads/images/2016/1211/042033_51ee13ad_700748.png "视频")
-![视频](http://git.oschina.net/uploads/images/2016/1211/042056_71db3584_700748.png "视频")
 
-PC视图
-图片:
-![图片](http://git.oschina.net/uploads/images/2016/1207/154018_72e6622d_700748.png "图片")
-视频
-![视频](http://git.oschina.net/uploads/images/2016/1207/154052_1201172a_700748.png "视频")
-PDF
-![PDF](http://git.oschina.net/uploads/images/2016/1207/154111_05f29a34_700748.png "PDF")
 ##wadir.php
+
+对于index.php的扩充
 基于<a href="https://github.com/shiny/php-aria2">php-aria2</a>，需要安装aria2的支持。
 简单的管理:
 <img src="http://inory.net/images/2016/12/26/bt1.png" alt="bt1.png" border="0">
