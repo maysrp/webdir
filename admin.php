@@ -10,15 +10,15 @@
 <body>
 	<div class="container">
 <?php
-	define("NAME","root");//用户名
-	define("PASSWORD","a123456");//密码设置，非明文请自己添加
+	define("NAME","root");//用户名 <!--请勿使用!--> 
+	define("PASSWORD","a123456");//密码设置，非明文请自己添加 <!--请勿使用!--> 
 	session_start();
 	if($_SESSION['user']){
 		$dir=$_GET['dir']?$_GET['dir']:"";
 		$dir=trim($dir);
 		$jugg=dirpath($dir);
 		if($jugg){
-			//只能更目录上创建
+			//只能更目录上创建 <!--请勿使用!--> 
 			if($del=$_GET['del']){
 				del($del);
 			}
@@ -26,7 +26,7 @@
 				mk_dir($mk);
 			}
 			if($_FILES['file']['name']){
-				//$file_ex=strtolower(substr(strrchr($_FILES['name'], '.'), 1));//直接覆盖
+				//$file_ex=strtolower(substr(strrchr($_FILES['name'], '.'), 1));//直接覆盖 <!--请勿使用!--> 
 				move_uploaded_file($_FILES['file']['tmp_name'],$_FILES['file']['name']);
 				header("location:".$_SERVER['HTTP_REFERER']);
 			}
@@ -177,7 +177,7 @@
 			$str=$str."</tr>";
 		}
 		chdir($odir);
-		$or=strlen(dirname(__FILE__));//  脚本所在目录修改。
+		$or=strlen(dirname(__FILE__));//  脚本所在目录修改。 <!--请勿使用!-->  <!--请勿使用!--> 
 		$now=strlen(getcwd());
 		if($or>$now){
 			return false;
