@@ -19,7 +19,7 @@ LNMP LAMP 一键包测试通过， **windows下惨不忍睹**
 
 ##wadir.php
 
-**对于index.php的扩充
+**对于index.php的扩充**
 
 基于<a href="https://github.com/shiny/php-aria2">php-aria2</a>，需要安装aria2的支持。
 简单的管理:
