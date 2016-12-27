@@ -3,6 +3,8 @@
 	* 
 	*/
 	define("PASS", "admin");
+	define("TYPE","d");
+	define("NUM", 1);
 	class Aria2{
     	protected $ch;
     	function __construct($server='http://127.0.0.1:6800/jsonrpc'){
@@ -239,6 +241,98 @@
 
 		}
 	}
+	/**
+	* 
+	*/
+	class json{
+		public $info;
+		function __construct(){
+			if(is_file("./info.json")){
+				$swap=file_get_contents("./info.json");
+				$this->info=json_decode($swap,true);
+			}else{
+				$this->info=array("data"=>"json","gid"=>"","gid_info"=>"","this_num"=>"","this_time"=>"","hash"=>"","hash_info"=>"");//infoHash
+				$aj=json_encode($this->info);
+				@file_put_contents("./info.json", $aj);
+			}
+		}
+		function gid($gid){
+			return in_array($gid, $this->info['gid']);
+		}
+		function hash($hash){
+			return in_array($hash, $this->info['hash']);
+		}
+		function add_hash($info){
+			if($info["result"]['infoHash']){
+				$this->info['hash'][]=$info["result"]['infoHash'];
+				$iof['time']=time();
+				$iof['gid']=$info["result"]['gid'];
+				$iof['hash']=$info["result"]['infoHash'];
+				$this->info['hash_info'][]=$iof;
+				$this->save(); 
+			}
+
+		}
+		function add($gid){
+			$this->add_num();
+			$this->add_gid($gid);
+			$this->save();
+		}
+		function save(){
+			$save=json_encode($this->info);
+			@file_put_contents("./info.json", $save);
+
+		}
+		function add_num(){
+			$this->info['this_time']=time();
+			$this->info['this_num']+=1;
+		}
+		function add_gid($gid){
+			$ar[$gid]['time']=time();
+			$ar[$gid]['gid']=$gid;
+			$this->info['gid_info'][]=$ar;
+			$this->info['gid'][]=$gid;
+		}
+		function jugg(){
+			$today=date("Ymd");
+			$month=date("Ym");
+			if(strtolower(TYPE)=="d"){
+				if($today==date("Ymd",$this->info['this_time'])){
+					if(NUM>$this->info['this_num']){
+						return true;
+					}else{
+						return false;
+					}
+				}else{
+					$this->info['this_num']=0;
+					return true;
+				}
+			}elseif (strtolower(TYPE)=="m") {
+				if($month==date("Ym",$this->info['this_time'])){
+					if(NUM>$this->info['this_num']){
+						return true;
+					}else{
+						return false;
+					}
+				}else{
+					$this->info['this_num']=0;
+					return true;
+				}
+				
+			}else{
+				if($today==date("Ymd",$this->info['this_time'])){
+					if(NUM<$this->info['this_num']){
+						return true;
+					}else{
+						return false;
+					}
+				}else{
+					$this->info['this_num']=0;
+					return true;
+				}
+			}
+		}
+	}
 	function size($fz){
 			if ($fz>(1024*1024*1024)) {
 				return sprintf("%.2f",$fz/(1024*1024*1024))."GB";
@@ -252,9 +346,31 @@
 		}
 	
 session_start();
+$download_info=new json();
+if ($_SESSION['user']) {
+	if (strlen($_GET['url'])>5) {//验证session才能添加操作
+		$download_jugg=$download_info->jugg();
+		if($download_jugg){
+			$url=$_GET['url'];
+			$dir=dirname(__FILE__);
+			$aria2 = new Aria2('http://127.0.0.1:6800/jsonrpc');
+			$json=$aria2->addUri(array($url),array('dir'=>$dir,));
+			$download_info->add($json['result']);
+			echo json_encode($json);
+			$gh=$aria2->tellStatus($json['result']);
+			$download_info->add_hash($gh);
+			return;
+		}else{
+			$ar['error']['message']="今日配额已经使用完";
+			echo json_encode($ar);
+			return;
+		}
+	}
+}
+
+
 $x=new dir();
 $x->open_dir();
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -285,9 +401,9 @@ $x->open_dir();
 <body>
 <?php
 	if ($_POST['password']==PASS) {
-		$_SESSION['user']=PASS;
+		$_SESSION['user']="666";
 	}
-	if($_SESSION['user']==PASS){
+	if($_SESSION['user']){
 	}else{
 ?>
 	<div  class="container">
@@ -311,15 +427,10 @@ $x->open_dir();
 <?php
 	return;
 	}
-if (strlen($_GET['url'])>5) {//验证session才能添加操作
-	$url=$_GET['url'];
-	$dir=dirname(__FILE__);
-	$aria2 = new Aria2('http://127.0.0.1:6800/jsonrpc');
-	$json=$aria2->addUri(array($url),array('dir'=>$dir,));
-	echo json_encode($json);
-	return;
-}
-/* 不需要操作
+	$free=@disk_free_space(".");//disk 
+	$total=@disk_total_space(".");
+	$used=$total-$free;
+	$usp=round($used/$total*100,2);//used %
 if(strlen($_GET['pause'])>5){
 	$aria2 = new Aria2('http://127.0.0.1:6800/jsonrpc');
 	$aria2->pause($_GET['pause']);
@@ -332,7 +443,6 @@ if(strlen($_GET['unpause'])>5){
 	header("Location:".$_SERVER['HTTP_REFERER']);
 	return;
 }	
-*/
 ?>
 	<div class="container">
 		<div class="row">
@@ -349,16 +459,14 @@ echo $x->pre() ;
 ?>
 				</h3>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-5">
 				<div class="input-group" style="margin-top:10px ">
 					<input type="text" name="magnet" id="magnet" class="form-control">
 					<span class="input-group-btn">
 						<span class="btn btn-success" id="btn-magnet">Magnet</span>
+						<span class="btn btn-info" id="xzz">下载列表</span>
 					</span>
 				</div>
-			</div>
-			<div class="col-md-1 text-center" style="margin-top:10px ">
-				<span class="btn btn-info" id="xzz">下载列表</span>
 			</div>
 		</div>
 		<table class="table table-striped ">
@@ -387,7 +495,37 @@ echo $x->pre() ;
 	}
 ?>
 		</table>
-			<span>Powered by <a href="https://git.oschina.net/supercell/webdir">webdir</a></span>
+			<div class="row">
+				<span class="col-md-2">Powered by <a href="https://github.com/maysrp/webdir">webdir</a></span>
+				<div class="col-md-6 ">
+					<div class="row">
+						<span class="col-md-2 text-right"><b>磁盘信息:</b></span>
+						<div class="col-md-10">
+							<div class="progress">
+								<div class="progress-bar 
+								<?php
+									if ($usp<30) {
+										echo "progress-bar-success";
+									}elseif($usp<60){
+										echo "progress-bar-primary";
+									}elseif($usp<90){
+										echo "progress-bar-warning";
+									}else{
+										echo "progress-bar-danger";
+									}
+
+								?>" role="progressbar" aria-valuenow="<?php echo $usp ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $usp ?>%;">
+							<?php echo $usp ?>%
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<span class="col-md-4">
+					<b><span class="text-danger">USED:<?php echo size($used)?></span> / <span class="text-success">FREE:<?php echo size($free)?></span> / <span class="text-primary">TOTAL:<?php echo size($total)?></span></b>
+				</span>
+			</div>
+
 	</div>
 	<div>
 		<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="modal">
@@ -406,7 +544,7 @@ echo $x->pre() ;
 		</div>
 	</div>
 	<div class="row hide" id="showdownload">
-		<span class="text-success"><b>正在下载的任务</b></span>
+		<span class="text-success"><b>下载中的任务</b></span>
 		<table class="table">
 			<tr>
 				<th class="text-left">文件名</th>
@@ -415,20 +553,21 @@ echo $x->pre() ;
 				<th>操作</th>
 			</tr>
 <?php
-	$aria2 = new Aria2('http://127.0.0.1:6800/jsonrpc');
+	$aria2 = new Aria2('http://127.0.0.1:6800/jsonrpc');//修改
 	$info=$aria2->tellActive();
 	foreach ($info['result'] as $key => $value) {
-		//echo "<tr><td>".$value['gid']."</td>";
+		if ((!$download_info->gid($value['gid'])) && (!$download_info->hash($value['infoHash']))) {	
+			continue;
+		}
 		echo "<td class=\"text-left\">".$value['bittorrent']['info']['name']."</td>";
 		echo "<td>".size($value['downloadSpeed'])."/S</td>";
 		echo "<td>".round($value['completedLength']/$value['totalLength']*100,2)."%</td>";
-		echo "<td><span class=\"text-success\">进行中</span></td></tr>";
+		echo "<td><a href=\"?pause=".$value['gid']."\" class=\" btn btn-danger btn-sm \" >关闭</a></td></tr>";
 	}
 ?>
 		</table>
 		<hr>
 		<span class="text-warning"><b>等待中的任务</b></span>
-		<hr>
 		<table class="table">
 			<tr>
 				<th class="text-left">文件名</th>
@@ -439,11 +578,14 @@ echo $x->pre() ;
 <?php
 	$info=$aria2->tellWaiting(0,1000);
 	foreach ($info['result'] as $key => $value) {
+		if ((!$download_info->gid($value['gid'])) && (!$download_info->hash($value['infoHash']))) {	
+			continue;
+		}
 		//echo "<tr><td>".$value['gid']."</td>";
 		echo "<td class=\"text-left\">".$value['bittorrent']['info']['name']."</td>";
 		echo "<td>".size($value['downloadSpeed'])."/S</td>";
 		echo "<td>".round($value['completedLength']/$value['totalLength']*100,2)."%</td>";
-		echo "<td><span class=\"text-danger\">停止中</span></td></tr>";
+		echo "<td><a href=\"?unpause=".$value['gid']."\" class=\" btn btn-success btn-sm \" >开始</a></td></tr>";
 	}
 ?>
 		</table>
@@ -496,11 +638,15 @@ echo $x->pre() ;
 	$("#btn-magnet").click(function(){
 		var magnet=$("#magnet").val();
 		$.get("?url="+magnet,function(data){
-			//console.log(data);//用于检测是否建立成功			
+			var re=eval("("+data+")");
 			if(typeof(mx) != 'undefined' ){
 				mx.hide();
 			}
-			mx=Messenger().post("你已经添加一个离线任务！");
+			if(re.result){
+				mx=Messenger().post("你已经添加一个离线任务！");
+			}else{
+				mx=Messenger().post("添加失败:"+re.error.message);
+			}
 		});
 		$("#magnet").val("");
 	})
