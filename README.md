@@ -19,7 +19,7 @@ $this->notdir=array("a","phpmyadmin");//不允许显示的文件夹
 ```
 
 支持在线播放mp4视频和MP3音频以及PDF在线预览,对于手机的自适应不是特别完美。
-eg：http://172.82.191.216/
+eg：http://webdir.cc/
 
 LNMP LAMP 一键包测试通过， **windows下惨不忍睹** 
 
