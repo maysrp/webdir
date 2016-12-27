@@ -44,7 +44,7 @@ $this->notdir=array("a","phpmyadmin");//不允许显示的文件夹
 ```
 ##more.php
 ###简单的多用户实现
-创建不同的目录每个目录都放入more.php，需要修改密码[不要设置相同的密码]
+创建不同的目录每个目录都放入more.php,配置如下：
 ```
 define("PASS", "admin");
 define("TYPE","d");//定义结算方式,d为每日,m为每月
