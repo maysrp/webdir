@@ -53,6 +53,18 @@ define("NUM", 1);//每个结束方式内可以下载的数量
 
 每个账户一个目录，登入后能添加magnet，对其进行基本管理。
 
+##moreinfo.php多用户控制，可以控制每个用户离线空间的总大小，周期结算类型，每个周期内可用的任务个数，每次任务的大小等......
+
+创建不同的目录每个目录都放入moreinfo.php,配置如下(目录必须可写 0777)：
+```
+define("PASS", "admin");
+define("TYPE","d");//定义结算方式,d为每日,m为每月
+define("NUM", 1);//每个结束方式内可以下载的数量
+define("DISK", 20);//单位GB,定义总空间大小
+define("MAX", 10);//单位GB,定义每个任务的大小[超出自动删除任务]
+```
+
+
 ##wardir/
 
 移动到:https://github.com/maysrp/wardir
