@@ -42,6 +42,16 @@ define("PASS", "admin");
 $this->notex=array("php","js","tgz");//不允许显示的后缀名文件
 $this->notdir=array("a","phpmyadmin");//不允许显示的文件夹
 ```
+##more.php
+###简单的多用户实现
+创建不同的目录每个目录都放入more.php，需要修改密码[不要设置相同的密码]
+```
+define("PASS", "admin");
+define("TYPE","d");//定义结算方式,d为每日,m为每月
+define("NUM", 1);//每个结束方式内可以下载的数量
+```
+
+每个账户一个目录，登入后能添加magnet，对其进行基本管理。
 
 ##wardir/
 
@@ -51,19 +61,8 @@ $this->notdir=array("a","phpmyadmin");//不允许显示的文件夹
 该文件只用于检测你是否完成了aria2的配置，上传到你的网站根目录访问即可，如有正常的文件下载信息表示完成了aria2配置，删除该文件即可。
 ##dht.dat
 有些新安装aria2，可能会因为缺少dht.dat导致无法magnet下载，拷贝该文件到你的/root/.aria2/下即可
-##more.php
-###简单的多用户实现
-创建不同的目录每个目录都放入more.php，需要修改密码[不要设置相同的密码]
-```
-define("PASS", "admin");
-	define("TYPE","d");//定义结算方式,d为每日,m为每月
- define("NUM", 1);//每个结束方式内可以下载的数量
-```
-
-每个账户一个目录，登入后能添加magnet，对其进行基本管理。
 
 ##ffmpge.php
-服务器可玩，vps没用，115 牛逼..
 
 基本界面和之前类似:
 ![ffmpeg](http://git.oschina.net/uploads/images/2016/1219/040352_a973d056_700748.png "界面")
