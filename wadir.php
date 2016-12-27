@@ -254,7 +254,7 @@
 session_start();
 if ($_SESSION['user']) {
 	if (strlen($_GET['url'])>5) {//验证session才能添加操作
-		$url=$_GET['url'];
+		$url=trim($_GET['url']);
 		$dir=dirname(__FILE__);
 		$aria2 = new Aria2('http://127.0.0.1:6800/jsonrpc');
 		$json=$aria2->addUri(array($url),array('dir'=>$dir,));
