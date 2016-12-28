@@ -60,7 +60,7 @@
 		}
 		function dirurl($dir){
 			$urf=substr($dir,2 );
-			return "?dir=".$urf;
+			return "?dir=".rawurlencode($urf);
 		}
 		function value($value){
 			$urf=substr($value,2 );
@@ -321,7 +321,7 @@ $x->open_dir();
 	}
 	foreach ($x->file as $key => $value) {
 		echo "<tr>";
-			echo "<td><span class=\" click_onload ".$x->icon($value)." fileshow\" type=\"".$x->type($value)."\" value=\"".rawurlencode($value)."\"> ".$x->filename($value)."</span></td>";
+			echo "<td><span class=\" click_onload ".$x->icon($value)." fileshow\" type=\"".$x->type($value)."\" value=\"".$x->value($value)."\"> ".$x->filename($value)."</span></td>";
 			echo "<td>".$x->size($value)."</td>";
 			echo "<td>".$x->mtime($value)."</td>";
 			echo "<td>".$x->download($value)."</td>";
