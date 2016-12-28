@@ -491,7 +491,7 @@ echo $x->pre() ;
 	}
 	foreach ($x->file as $key => $value) {
 		echo "<tr>";
-			echo "<td><span class=\" click_onload ".$x->icon($value)." fileshow\" type=\"".$x->type($value)."\" value=\"".$this->value($value)."\"> ".$x->filename($value)."</span></td>";
+			echo "<td><span class=\" click_onload ".$x->icon($value)." fileshow\" type=\"".$x->type($value)."\" value=\"".$x->value($value)."\"> ".$x->filename($value)."</span></td>";
 			echo "<td>".$x->size($value)."</td>";
 			echo "<td>".$x->mtime($value)."</td>";
 			echo "<td>".$x->download($value)."</td>";
