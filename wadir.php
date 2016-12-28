@@ -256,7 +256,7 @@
 		}
 	
 session_start();
-if ($_SESSION['user']) {
+if ($_SESSION['user']==PASS) {
 	if (strlen($_GET['url'])>5) {//验证session才能添加操作
 		$url=trim($_GET['url']);
 		$dir=dirname(__FILE__);
@@ -300,9 +300,9 @@ $x->open_dir();
 <body>
 <?php
 	if ($_POST['password']==PASS) {
-		$_SESSION['user']="666";
+		$_SESSION['user']=PASS;
 	}
-	if($_SESSION['user']){
+	if($_SESSION['user']==PASS){
 	}else{
 ?>
 	<div  class="container">
