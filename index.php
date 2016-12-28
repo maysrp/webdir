@@ -62,6 +62,10 @@
 			$urf=substr($dir,2 );
 			return "?dir=".$urf;
 		}
+		function value($value){
+			$urf=substr($value,2 );
+			return $urf;
+		}
 		function type($file){
 			$ex=$this->ex($file);
 			switch ($ex) {
@@ -380,14 +384,14 @@ $x->open_dir();
 				$(".modal-title").html("");
 				$(".modal-title").html(name);
 				$(".modal-body").html("");
-				$(".modal-body").html("<iframe width=\"80%\" height=\"600px\" src="+value+">");
+				$(".modal-body").html("<iframe width=\"80%\" height=\"600px\" src=\""+value+"\">");
 				$("#modal").modal();
 			break;
 			case "pdf":
 				$(".modal-title").html("");
 				$(".modal-title").html(name);
 				$(".modal-body").html("");
-				$(".modal-body").html("<iframe width=\"80%\" height=\"800px\" src="+value+">");
+				$(".modal-body").html("<iframe width=\"80%\" height=\"800px\" src=\""+value+"\">");
 				$("#modal").modal();
 			default:
 		}
