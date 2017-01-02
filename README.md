@@ -31,7 +31,7 @@ LNMP LAMP 一键包测试通过， **windows下惨不忍睹**
 基于<a href="https://github.com/shiny/php-aria2">php-aria2</a>，需要安装aria2的支持。
 简单的管理:
 <img src="http://inory.net/images/2016/12/26/bt1.png" alt="bt1.png" border="0">
-<img src="http://inory.net/images/2016/12/26/ec7938932a3f4f0e.png" alt="ec7938932a3f4f0e.png" border="0">
+<img src="http://inory.net/images/2017/01/03/1561515.png" alt="ec7938932a3f4f0e.png" border="0">
 关于导入Magnet成功却从未有速度，且不显示文件名的，可能存在的问题，缺少dht.dat,参考下文中的dht.dat的处理方法
 ###配置
 密码:
