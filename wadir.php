@@ -459,7 +459,7 @@ echo $x->pre() ;
 		echo "<td class=\"text-left\">".$value['bittorrent']['info']['name']."</td>";
 		echo "<td>".size($value['downloadSpeed'])."/S</td>";
 		echo "<td>".round($value['completedLength']/$value['totalLength']*100,2)."%</td>";
-		echo "<td><a href=\"?pause=".$value['gid']."\" class=\" btn btn-danger btn-sm \" >关闭</a></td></tr>";
+		echo "<td><a href=\"?pause=".$value['gid']."\" class=\" btn btn-warning btn-sm \" >关闭</a> <a href=\"?remove=".$value['gid']."\" class=\" btn btn-danger btn-sm \" >删除</a></td></tr>";
 	}
 ?>
 		</table>
@@ -480,7 +480,7 @@ echo $x->pre() ;
 		echo "<td class=\"text-left\">".$value['bittorrent']['info']['name']."</td>";
 		echo "<td>".size($value['downloadSpeed'])."/S</td>";
 		echo "<td>".round($value['completedLength']/$value['totalLength']*100,2)."%</td>";
-		echo "<td><a href=\"?unpause=".$value['gid']."\" class=\" btn btn-success btn-sm \" >开始</a></td></tr>";
+		echo "<td><a href=\"?unpause=".$value['gid']."\" class=\" btn btn-success btn-sm \" >开始</a>  <a href=\"?remove=".$value['gid']."\" class=\" btn btn-danger btn-sm \" >删除</a></td></tr>";
 	}
 ?>
 		</table>
