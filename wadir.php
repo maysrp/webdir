@@ -341,7 +341,14 @@ if(strlen($_GET['unpause'])>5){
 	$aria2->unpause($_GET['unpause']);
 	header("Location:".$_SERVER['HTTP_REFERER']);
 	return;
+}
+if(strlen($_GET['remove'])>5){
+	$aria2 = new Aria2('http://127.0.0.1:6800/jsonrpc');
+	$aria2->remove($_GET['remove']);
+	header("Location:".$_SERVER['HTTP_REFERER']);
+	return;
 }	
+
 ?>
 	<div class="container">
 		<div class="row">
