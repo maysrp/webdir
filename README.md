@@ -26,6 +26,9 @@ LNMP LAMP 一键包测试通过， **windows下惨不忍睹**
 
 ##wadir.php
 
+Aria2的安装以及配置： https://github.com/maysrp/wadir/blob/master/README.md
+
+
 **对于index.php的扩充**
 
 基于<a href="https://github.com/shiny/php-aria2">php-aria2</a>，需要安装aria2的支持。
