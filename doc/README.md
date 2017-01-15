@@ -26,10 +26,10 @@ Aria2 config
 mkdir /root/.aria2
 
 
-wget http://webdir.cc/aria2.config /root/.aria2
+wget http://webdir.cc/aria2.config /root/.aria2/aria2.config
 
 
-wget http://webdir.cc/dht.dat /root/.aria2
+wget http://webdir.cc/dht.dat /root/.aria2/dht.dat
 
 
 echo '' > /root/aria2.session 
