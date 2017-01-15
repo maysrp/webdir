@@ -56,7 +56,7 @@ $this->notdir=array("a","phpmyadmin");
 $this->notex=array("php","js","tgz");
 ```
 
-visit http://yourdomain/wadir.php by you browser
+visit http://yourdomain/wadir.php by your browser
 
 
 
