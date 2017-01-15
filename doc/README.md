@@ -46,6 +46,18 @@ screen -dmS aria2 aria2c --enable-rpc --rpc-listen-all=true --rpc-allow-origin-a
 
 upload *wadir.php* on your WWW directory
 
+set passworfd
+```
+define("PASS","Password");
+```
+set forbidden access directory [notdir] and extension [notex]
+```
+$this->notdir=array("a","phpmyadmin");
+$this->notex=array("php","js","tgz");
+```
+
+visit http://yourdomain/wadir.php by you browser
+
 
 
 
