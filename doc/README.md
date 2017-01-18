@@ -46,7 +46,7 @@ screen -dmS aria2 aria2c --enable-rpc --rpc-listen-all=true --rpc-allow-origin-a
 
 upload *wadir.php* on your WWW directory
 
-set passworfd
+set password
 ```
 define("PASS","Password");
 ```
