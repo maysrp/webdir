@@ -282,9 +282,9 @@ $x->open_dir();
 	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
 	<script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 	<script src="https://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-	<script src="https//cdn.bootcss.com/messenger/1.5.0/js/messenger.min.js"></script>
-	<link href="https//cdn.bootcss.com/messenger/1.5.0/css/messenger.min.css" rel="stylesheet">
-	<link href="https//cdn.bootcss.com/messenger/1.5.0/css/messenger-theme-future.min.css" rel="stylesheet">
+	<script src="https://cdn.bootcss.com/messenger/1.5.0/js/messenger.min.js"></script>
+	<link href="https://cdn.bootcss.com/messenger/1.5.0/css/messenger.min.css" rel="stylesheet">
+	<link href="https://cdn.bootcss.com/messenger/1.5.0/css/messenger-theme-future.min.css" rel="stylesheet">
 	<title>Webdir</title>
 	<style type="text/css">
 		body{
