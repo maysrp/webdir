@@ -72,8 +72,10 @@ define("DISK", 20);//单位GB,定义总空间大小
 define("MAX", 10);//单位GB,定义每个任务的大小[超出自动删除任务]
 ```
 每个账户一个目录，登入后能添加magnet，对其进行基本管理。
-
-
+##dplayer.php
+使用<a href="https://github.com/DIYgod/DPlayer">dplayer</a>播放器的index.php;
+##wadir-dplay.php
+使用<a href="https://github.com/DIYgod/DPlayer">dplayer</a>播放器的wadir.php;
 ##wardir/
 
 移动到:https://github.com/maysrp/wardir
