@@ -380,6 +380,7 @@ if(isset($x->file)){
 				$("#modal").modal();
 			break;
 			case "video":
+			case "mp3":
 				$(".modal-title").html("");
 				$(".modal-title").html(name);
 				$(".modal-body").html("");
@@ -407,13 +408,6 @@ if(isset($x->file)){
     				}
 				});			
 			break;
-			case "mp3":
-				$(".modal-title").html("");
-				$(".modal-title").html(name);
-				$(".modal-body").html("");
-				$(".modal-body").html("<audio src=\""+value+"\" id=\"play\" autoplay controls>您的浏览器不支持 audio 标签。</audio>");
-				$("#modal").modal();
-			break;
 			case "text":
 				$(".modal-title").html("");
 				$(".modal-title").html(name);
@@ -431,14 +425,9 @@ if(isset($x->file)){
 		}
 	})
 	$('#modal').on('hidden.bs.modal', function (e) {
-  		if(dp){
+  		if(window.dp){
   			dp.pause();
   		}
-  		var play=$("#play")[0];
-  		if(play){
-  			play.pause();
-  		}
-
 	})
 	$(".click_onload").mouseover(function(){
 		$(this).addClass("text-primary");
