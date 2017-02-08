@@ -252,9 +252,8 @@
 <body>
 <?php
 $time=time();
-$ip=$_SERVER['REMOTE_ADDR'];
 $server=$_SERVER['HTTP_HOST'];	
-$token=base64_encode($_SERVER['REMOTE_ADDR'].":".$time.":".$ip.":".$server);
+$token=base64_encode($_SERVER['REMOTE_ADDR'].":".$time.":".$server);
 if(defined("PASS")){
 	session_start();
 	if ($_SESSION['user']==PASS) {
