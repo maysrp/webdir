@@ -373,7 +373,7 @@ if(strlen($_GET['remove'])>5){
 		<div class="row">
 			<div class="col-md-1" style="margin-bottom:10px; ">
 				<a  href="
-<?php echo $_SERVER['HTTP_REFERER'] ?>
+<?php echo $_SERVER['HTTP_REFERER']=isset($_SERVER['HTTP_REFERER'])?$_SERVER['HTTP_REFERER']:""; ?>
 				"
 				><h2 class="btn btn-primary"><span class="glyphicon glyphicon-chevron-left " id="back"></span></h2></a>
 			</div>
@@ -525,6 +525,7 @@ echo $x->pre() ;
 				$(".modal-body").html("<a href=\""+value+"\"><img style=\"max-width:80%;\" src=\""+value+"\"></a>");
 				$("#modal").modal();
 			break;
+			case "mp3":
 			case "video":
 				$(".modal-title").html("");
 				$(".modal-title").html(name);
@@ -553,11 +554,6 @@ echo $x->pre() ;
     				}
 				});			
 			break;
-			case "mp3":
-				$(".modal-title").html(name);
-				$(".modal-body").html("<audio src=\""+value+"\" id=\"play\" autoplay controls>您的浏览器不支持 audio 标签。</audio>");
-				$("#modal").modal();
-			break;
 			case "text":
 				$(".modal-title").html(name);
 				$(".modal-body").html("<iframe width=\"80%\" height=\"600px\" src=\""+value+"\">");
@@ -571,7 +567,7 @@ echo $x->pre() ;
 		}
 	})
 	$('#modal').on('hidden.bs.modal', function (e) {
-  		if(dp){
+  		if(window.dp){
   			dp.pause();
   		}
   		var play=$("#play")[0];
