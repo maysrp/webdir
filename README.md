@@ -24,10 +24,15 @@ eg：http://webdir.cc/
 
 LNMP LAMP 一键包测试通过， **windows下惨不忍睹** 
 
+##wadir-ajax.php
+
+与下面的wadir.php安装步骤以及功能完全相同，但是aria2下载操作全部换成AJAX进行，界面稍微好于wadir.php.定时刷新30S一次，可以手动刷新。
+
+![Aria2控制界面](http://bilibara.com/images/2017/02/23/ari.png)
+
 ##wadir.php
 
 详细安装方法:https://github.com/maysrp/webdir/tree/master/doc
-
 
 **对于index.php的扩充**
 
