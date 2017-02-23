@@ -486,7 +486,7 @@ echo $x->pre() ;
 			<H3>进行中的任务  <span onClick="aria2_re()" class="glyphicon glyphicon-refresh text-success"></span></H3>
 			<table class="table table_active">
 				<tr>
-					<th>任务名</th>
+					<th width="60%" style="word-wrap:break-word;word-break:break-all;">任务名</th>
 					<th title="title">已经完成/总量</th>
 					<th>速度</th>
 					<th>操作</th>
@@ -497,7 +497,7 @@ echo $x->pre() ;
 			<h3>等待中的任务</h3>
 			<table class="table table_waiting">
 				<tr>
-					<th>任务名</th>
+					<th width="60%" style="word-wrap:break-word;word-break:break-all;">任务名</th>
 					<th title="title">已经完成/总量</th>
 					<th>速度</th>
 					<th>操作</th>
