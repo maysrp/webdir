@@ -1,5 +1,5 @@
-#webdir
-##index.php
+# webdir
+## index.php
 index.php放在你的网站根目录并且设置好你的所在目录权限即可[用于目录浏览]
 
 1.图标图片预览支持IE浏览器
@@ -24,13 +24,13 @@ eg：http://webdir.cc/
 
 LNMP LAMP 一键包测试通过， **windows下惨不忍睹** 
 
-##wadir-ajax.php
+## wadir-ajax.php
 
 与下面的wadir.php安装步骤以及功能完全相同，但是aria2下载操作全部换成AJAX进行，界面稍微好于wadir.php.定时刷新30S一次，可以手动刷新。
 
 ![Aria2控制界面](http://bilibara.com/images/2017/02/23/ari.png)
 
-##wadir.php
+## wadir.php
 
 详细安装方法:https://github.com/maysrp/webdir/tree/master/doc
 
@@ -62,7 +62,7 @@ define("NUM", 1);//每个结束方式内可以下载的数量
 
 每个账户一个目录，登入后能添加magnet，对其进行基本管理。
 
-##moreinfo.php
+## moreinfo.php
 
 <img src="http://inory.net/images/2016/12/27/121212112212.png" alt="121212112212.png" border="0" />
 
@@ -85,12 +85,12 @@ define("MAX", 10);//单位GB,定义每个任务的大小[超出自动删除任�
 
 移动到:https://github.com/maysrp/wardir
 
-##jugg.php
+## jugg.php
 该文件只用于检测你是否完成了aria2的配置，上传到你的网站根目录访问即可，如有正常的文件下载信息表示完成了aria2配置，删除该文件即可。
 ##dht.dat
 有些新安装aria2，可能会因为缺少dht.dat导致无法magnet下载，拷贝该文件到你的/root/.aria2/下即可
 
-##ffmpge.php
+## ffmpge.php
 
 基本界面和之前类似:
 ![ffmpeg](http://git.oschina.net/uploads/images/2016/1219/040352_a973d056_700748.png "界面")
@@ -126,7 +126,7 @@ return "<span class=\"ffmpeg  text-primary\" value=\"?video=".$file."\"><span cl
 return "<span class=\"ffmpeg text-primary\" value=\"?video=".$file."&type=mp4\"><span class=\"glyphicon glyphicon-refresh\"></span></span>|<a href=\"".$file."\" ><span class=\"glyphicon glyphicon-download-alt\"></span></a>";
 ```
 
-##gbk.zip
+## gbk.zip
 如果中文乱码请解压使用该脚本
 
 
