@@ -24,6 +24,15 @@ eg：http://webdir.cc/
 
 LNMP LAMP 一键包测试通过， **windows下惨不忍睹** 
 
+## WabAN
+
+Webdir下外挂一个[AriaNg](https://github.com/mayswind/AriaNg)去除了自身的下载，通过外挂一个AriaNg来控制下载；
+
+
+![界面](http://bilibara.com/images/2017/06/19/wan1.png)
+
+![AriaNg下载界面](http://bilibara.com/images/2017/06/19/wan.png)
+
 ## wadir-ajax.php
 
 与下面的wadir.php安装步骤以及功能完全相同，但是aria2下载操作全部换成AJAX进行，界面稍微好于wadir.php.定时刷新30S一次，可以手动刷新。
