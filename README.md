@@ -26,7 +26,7 @@ LNMP LAMP 一键包测试通过， **windows下惨不忍睹**
 
 ## WabAN
 
-Webdir下外挂一个[AriaNg](https://github.com/mayswind/AriaNg)去除了自身的下载，通过外挂一个AriaNg来控制下载；
+Webdir下外挂一个[AriaNg](https://github.com/mayswind/AriaNg)来控制下载(注意:Aria2请务必安装不然会显示“未连接”)。
 
 
 ![界面](http://bilibara.com/images/2017/06/19/wan1.png)
