@@ -36,7 +36,7 @@ Webdir下外挂一个[AriaNg](https://github.com/mayswind/AriaNg)来控制下载
 ### 安装WebAN
 安装[Aria2](https://github.com/maysrp/webdir/blob/master/doc/%E7%A6%BB%E7%BA%BF%E4%B8%8B%E8%BD%BD.md#aria2-安装)
 
-下载WebAN.zip解压到你的想放的web目录，在index.php文件顶部可以编辑密码，默认密码为admin
+下载[WebAN.zip](https://github.com/maysrp/webdir/raw/master/WebAN.zip)并解压到你的想放的web目录，在index.php文件顶部可以编辑密码，默认密码为admin，访问你的对应的网站即可。
 
 ## wadir-ajax.php
 
